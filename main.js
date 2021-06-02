@@ -1,21 +1,19 @@
 // 1. 세수중 최솟값
-function solution(arr) {
+function solution(a, b, c) {
   let answer;
 
   return answer;
 }
 
-let arr = [6, 5, 11];
-console.log(solution(arr));
+console.log(solution(6, 5, 11));
 // 2. 삼각형 판단하기
-function solution2(arr) {
+function solution2(a, b, c) {
   let answer;
 
   return answer;
 }
 
-let arr2 = [6, 7, 11];
-console.log(solution2(arr2));
+console.log(solution2(6, 7, 11));
 // 3. 연필 개수
 function solution3(arr) {
   let answer;
