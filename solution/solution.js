@@ -56,23 +56,32 @@ function solution(a, b, c) {
   // 출력 3
   
   // 4. 1부터 N까지의 합계
-  function solution4(arr) {
-    let answer;
-  
+  function solution4(n) {
+    let answer = 0;
+    // n부터 시작해서 1이 되면 break;
+    while(n > 0) {
+      console.log(n);
+      answer += n;
+      n--;
+    }
     return answer;
   }
-  
-  let arr4 = 6;
-  console.log(solution4(arr4));
+  console.log('4번');
+  let n = 10;
+  console.log(solution4(n));
   
   
   // 5. 최솟값 구하기
   function solution5(arr) {
     let answer;
-  
+    
+    //함수를 많이 생략함
+    let newArr = arr.sort((a,b) => a-b )
+    answer = newArr[0];
     return answer;
   }
   
+  console.log('5번');
   let arr5 = [5, 3, 7, 11, 2, 15, 17];
   console.log(solution5(arr5)); // 2
   

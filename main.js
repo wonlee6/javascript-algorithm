@@ -1,9 +1,6 @@
 // 1. 세수중 최솟값
 function solution(a, b, c) {
   let answer;
-
-  
-
   return answer;
 }
 
