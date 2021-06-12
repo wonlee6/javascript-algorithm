@@ -1,4 +1,4 @@
-// 1. 세수중 최솟값
+// 1. 세수중 최솟값 - DONE
 function solution(a, b, c) {
     let answer;
   
@@ -11,31 +11,48 @@ function solution(a, b, c) {
 
     return answer;
   }
-  
+  console.log('1번');
   console.log(solution(6, 5, 11));
   
-  
-  // 2. 삼각형 판단하기
+
+  // 2. 삼각형 판단하기 - DONE
   // 가장 큰 수 > 나머지 두 수의 합
   // yes or no 출력
   function solution2(a, b, c) {
     let answer;
-  
+    let arr = [a, b, c]
+    
+    arr.sort(function(a, b){
+        return b-a
+    });
+
+    // 삼각형 성립 조건: 제일 큰변의 길이가 나머지 두 변의 길이의 합 보다 작아야 성립된다.
+    if(arr[0] < arr[1] + arr[2]) answer = 'yes';
+    else answer = 'no';
+
     return answer;
   }
   
-  console.log(solution2(6, 7, 11));
+  console.log('2번');
+  console.log(solution2(2, 3, 5)); //no
+  console.log(solution2(4, 5, 6)); //yes
   
-  // 3. 연필 개수
-  // 1다스에 12개 
-  function solution3(arr) {
+  // 3. 연필 개수 - DONE
+  // 1다스에 12개  
+  // N명의 학생수에게 연필을 나눠줄 때 필요한 연필 다스의 수
+  function solution3(studentNum) {
     let answer;
-  
-    return answer;
+
+    // N명의 학생에게 
+    if(studentNum % 12 === 0) answer = studentNum / 12;
+    else answer = (studentNum / 12) + 1;
+
+    return parseInt(answer);
   }
-  
-  let arr3 = 25;
-  console.log(solution3(arr3));
+
+  console.log('3번');
+  let studentNum = 25;
+  console.log(solution3(studentNum));
   // 출력 3
   
   // 4. 1부터 N까지의 합계
