@@ -86,17 +86,40 @@ function solution(a, b, c) {
   console.log(solution5(arr5)); // 2
   
   
-  // 6. 홀수
+  // 6. 홀수  :  map 사용시 
   // 합계, 홀수중 최솟값
-  function solution6(arr) {
+  function solution6_1(arr) {
     let answer;
-  
+    let oddArr = arr.map(value => {
+      console.log(value);
+      if(value % 2 !== 0) return value;
+    })
+    console.log(oddArr);
+      //  map 사용시 return 되는 값이
+      // [undefined, 77, undefined, 41, 53, undefined, 85]
+      // 새로 배열을 만들어주지만 기존의 배열의 순서나 크기가 달라지지 않는다.
     return answer;
   }
   
+  console.log('6번_map');
   let arr6 = [12, 77, 38, 41, 53, 92, 85];
-  console.log(solution6(arr6)); // [256,41]
+  console.log(solution6_1(arr6)); // [256,41]
   
+
+  // 6. 홀수 : filter 사용시 return 하는 값이 true 일때만 그때의 value 값으로 새로운 배열을 만든다. 
+  // 합계, 홀수중 최솟값
+  function solution6_2(arr) {
+    let answer;
+    let oddArr = arr.filter(value => {
+      return value % 2 !== 0
+    })
+    console.log(oddArr); // [77, 41, 53, 85]
+    answer = oddArr.sort((a,b) => a-b)[0];
+    return answer;
+  }
+  
+  console.log('6번_filter');
+  console.log(solution6_2(arr6)); // [256,41]
   
   // 7. 10부제
   // 일의 자리 숫자를 보고 10부제 위반하는 차량의 대수 출력
