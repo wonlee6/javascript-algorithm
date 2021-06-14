@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug tests single run",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceRoot}/node_modules/.bin/jest",
+        "cwd": "${workspaceRoot}",
+        "args": [
+          "-i"
+        ],
+        "windows": {
+          "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+        }
+      }
+    ]
+}
