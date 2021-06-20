@@ -25,7 +25,8 @@ function solution(genres, plays) {
   // { plays: 1450, music: [ [Array], [Array], [Array] ] }\
 
   sort.forEach((value) => {
-    if (value.music.length > 1) {
+    console.log(value); //  { plays: 3100, music: [ [ 1, 600 ], [ 4, 2500 ] ] } ,  { plays: 1450, music: [ [ 0, 500 ], [ 2, 150 ], [ 3, 800 ] ] }
+    if (value.music.length >= 2) {
       value.music.sort((a, b) => {
         if (a[1] > b[1]) return -1;
         else if (a[1] < b[1]) return 1;
