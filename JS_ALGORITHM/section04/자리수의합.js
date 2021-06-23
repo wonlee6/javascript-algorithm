@@ -18,7 +18,7 @@ function solution(n, arr) {
     // console.log(`sum : ${sum}`, `max : ${max}`, `value : ${value}`);
 
     // 첫 번째 배열 이후부터 비교
-    if (sum > max && value !== arr[0]) {
+    if (sum > max) {
       max = sum;
       return value;
     } else if (sum === max) {
