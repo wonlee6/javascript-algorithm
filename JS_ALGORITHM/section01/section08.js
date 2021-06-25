@@ -1,4 +1,4 @@
-// 10 부제
+// 7닌쟁이
 function solution(arr) {
   let answer,
     sum = 0;

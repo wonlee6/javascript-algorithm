@@ -35,3 +35,19 @@ function solution(arr) {
 
 // 출력 23, 2, 73, 2, 3
 module.exports = solution;
+
+// let answer = [];
+
+//   for (const x of arr) {
+//     let str = parseInt(x.toString().split('').reverse().join(''));
+//     // console.log(str);
+//     let flag = 1;
+//     if (str !== 1) {
+//       for (let i = 2; i < Math.sqrt(str); i++) {
+//         if (str % i === 0) flag = 0;
+//       }
+//       if (flag) answer.push(str);
+//     }
+//   }
+
+//   return answer;

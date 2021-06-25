@@ -33,83 +33,41 @@
 // 2.
 function solution(genres, plays) {
   let answer = [];
-  let map = new Map();
-  for (let x = 0; x < genres.length; x++) {
-    if (map.has(genres[x])) map.set(genres[x], map.get(genres[x]) + plays[x]);
-    else map.set(genres[x], plays[x]);
-  }
-  console.log(map); // 'classic' => 1450, 'pop' => 3100
 
-  let indexMap = new Map();
-  for (let i = 0; i < genres.length; i++) {
-    if (indexMap.has(genres[i])) indexMap.set(i, genres[i]);
-    else indexMap.set(i, genres[i]); //
-  }
-  console.log(indexMap); //
+  const list = genres.reduce((acc, value, index) => {
+    if (!acc[value]) {
+      acc[value] = { plays: plays[index], music: [] };
+    } else {
+      acc[value].plays += plays[index];
+    }
+    acc[value].music.push([index, plays[index]]);
+    return acc;
+  }, {});
+  // {
+  //   classic: { plays: 1450, music: [ [Array], [Array], [Array] ] },
+  //   pop: { plays: 3100, music: [ [Array], [Array] ] }
+  // }
+  // console.log(list);
 
-  let playMap = new Map();
-  for (let i = 0; i < plays.length; i++) {
-    if (playMap.has(plays[i])) playMap.set(plays[i], playMap.get(plays[i]));
-    else playMap.set(plays[i], i);
-  }
-  // console.log(playMap); //  500 => 0, 600 => 1, 150 => 2, 800 => 3, 2500 => 4
+  const sort = Object.values(list).sort((a, b) => b.plays - a.plays);
+  console.log(sort);
+  // { plays: 3100, music: [ [Array], [Array] ] },
+  // { plays: 1450, music: [ [Array], [Array], [Array] ] }\
 
-  const result = [...playMap.entries()];
-  console.log(result); //  [ [ 500, 0 ], [ 600, 1 ], [ 150, 2 ], [ 800, 3 ], [ 2500, 4 ] ]
-
-  const rank = [...genres].sort((a, b) => map.get(b) - map.get(a)); //   [ 'pop', 'pop', 'classic', 'classic', 'classic' ]
-  console.log(rank);
-  for (const x of map) {
-  }
-
-  return answer;
+  sort.forEach((value) => {
+    console.log(value); //  { plays: 3100, music: [ [ 1, 600 ], [ 4, 2500 ] ] } ,  { plays: 1450, music: [ [ 0, 500 ], [ 2, 150 ], [ 3, 800 ] ] }
+    if (value.music.length >= 2) {
+      value.music.sort((a, b) => {
+        if (a[1] > b[1]) return -1;
+        else if (a[1] < b[1]) return 1;
+        else return a[0] > b[0] ? 1 : -1;
+      });
+      answer.push(value.music[0][0]);
+      answer.push(value.music[1][0]);
+    } else {
+      answer.push(value.music[0][0]);
+    }
+  });
 }
-// 장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
 
 module.exports = solution;
-
-// let answer = [];
-//   let map = new Map();
-//   for (let x = 0; x < genres.length; x++) {
-//     if (map.has(genres[x])) map.set(genres[x], map.get(genres[x]) + plays[x]);
-//     else map.set(genres[x], plays[x]);
-//   }
-//   console.log(map);
-
-//   let hash = new Map();
-//   for (let i = 0; i < genres.length; i++) {
-//     hash.set(plays[i], genres[i]);
-//   }
-//   console.log(hash);
-
-//   let hash2 = new Map([...hash.entries()].sort((a, b) => b[0] - a[0]));
-
-//   const rank = [...genres].sort((a, b) => map.get(b) - map.get(a));
-
-//   let ranks = [...new Set(rank)];
-
-//   let result = [];
-//   for (const i of ranks) {
-//     for (const [key, value] of hash2) {
-//       if (value === i) {
-//         result.push(key);
-//       }
-//     }
-//   }
-
-//   let search = new Map();
-//   for (let i = 0; i < plays.length; i++) {
-//     search.set(plays[i], i);
-//   }
-//   console.log(search);
-
-//   for (let i = 0; i < ranks.length * 2; i++) {
-//     for (const [key, value] of search) {
-//       if (result[i] === key) {
-//         answer.push(value);
-//       }
-//     }
-//   }
-
-//   return answer;
-// }
