@@ -19,6 +19,7 @@ function solution(board, moves) {
         let temp = board[i][x - 1];
         board[i][x - 1] = 0;
         if (temp === stack[stack.length - 1]) {
+          // 여기 부분을 왜 생각못했을까
           stack.pop();
           answer += 2;
         } else stack.push(temp);
