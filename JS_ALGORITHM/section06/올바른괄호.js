@@ -15,13 +15,16 @@ function solution(arr) {
 
   let array = [];
   for (const x of arr) {
+    // "(" 라면 빈 배열에 푸시
     if (x === "(") {
       array.push(x);
     } else {
+      // pop() , 배열의 길이가 0 이라면 바로 리턴
       if (array.length === 0) return (answer = "NO");
       array.pop();
     }
   }
+  // 반복문돌고난후 배열의 길이가 1이상이면 리턴 no
   if (array.length > 0) return "NO";
 
   return answer;
