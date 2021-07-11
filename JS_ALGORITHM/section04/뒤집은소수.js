@@ -9,7 +9,7 @@ function solution(arr) {
   answer = [...arr]
     .map((v) => {
       // 문자열 > (배열만들면서)쪼개고 > 반대로 > 배열벗어나고 > 다시 숫자로
-      return parseInt(v.toString().split('').reverse().join(''));
+      return parseInt(v.toString().split("").reverse().join(""));
     })
     .filter((value) => {
       // console.log(value); // 23, 55, 26,2, 52,73,2,3,1
